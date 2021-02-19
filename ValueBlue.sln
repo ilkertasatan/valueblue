@@ -6,6 +6,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MovieSearch", "MovieSearch"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValueBlue.MovieSearch.Api", "src\Services\MovieSearch\ValueBlue.MovieSearch.Api\ValueBlue.MovieSearch.Api.csproj", "{DB044710-6C07-42E4-984F-37A65CDEA418}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValueBlue.MovieSearch.Application", "src\Services\MovieSearch\ValueBlue.MovieSearch.Application\ValueBlue.MovieSearch.Application.csproj", "{33908330-3553-4238-8BAC-25093FD87C1D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValueBlue.MovieSearch.Domain", "src\Services\MovieSearch\ValueBlue.MovieSearch.Domain\ValueBlue.MovieSearch.Domain.csproj", "{C0821E58-50F2-41E7-99F1-C334CE8E6EE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValueBlue.MovieSearch.Infrastructure", "src\Services\MovieSearch\ValueBlue.MovieSearch.Infrastructure\ValueBlue.MovieSearch.Infrastructure.csproj", "{6406E0BC-53BB-4F16-BCCC-660079B1EA3D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -14,11 +20,26 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{A86B13F1-484A-4501-AE8D-C5FBB38EAB56} = {D087E2DA-F8CC-402F-A71B-8D3A8C629385}
 		{DB044710-6C07-42E4-984F-37A65CDEA418} = {A86B13F1-484A-4501-AE8D-C5FBB38EAB56}
+		{33908330-3553-4238-8BAC-25093FD87C1D} = {A86B13F1-484A-4501-AE8D-C5FBB38EAB56}
+		{C0821E58-50F2-41E7-99F1-C334CE8E6EE0} = {A86B13F1-484A-4501-AE8D-C5FBB38EAB56}
+		{6406E0BC-53BB-4F16-BCCC-660079B1EA3D} = {A86B13F1-484A-4501-AE8D-C5FBB38EAB56}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{DB044710-6C07-42E4-984F-37A65CDEA418}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DB044710-6C07-42E4-984F-37A65CDEA418}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB044710-6C07-42E4-984F-37A65CDEA418}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB044710-6C07-42E4-984F-37A65CDEA418}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33908330-3553-4238-8BAC-25093FD87C1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33908330-3553-4238-8BAC-25093FD87C1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33908330-3553-4238-8BAC-25093FD87C1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33908330-3553-4238-8BAC-25093FD87C1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0821E58-50F2-41E7-99F1-C334CE8E6EE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0821E58-50F2-41E7-99F1-C334CE8E6EE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0821E58-50F2-41E7-99F1-C334CE8E6EE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0821E58-50F2-41E7-99F1-C334CE8E6EE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6406E0BC-53BB-4F16-BCCC-660079B1EA3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6406E0BC-53BB-4F16-BCCC-660079B1EA3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6406E0BC-53BB-4F16-BCCC-660079B1EA3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6406E0BC-53BB-4F16-BCCC-660079B1EA3D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
