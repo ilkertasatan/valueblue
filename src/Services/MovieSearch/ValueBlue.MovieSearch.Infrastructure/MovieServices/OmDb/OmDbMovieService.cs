@@ -17,7 +17,7 @@ namespace ValueBlue.MovieSearch.Infrastructure.MovieServices.OmDb
         {
             if (uri == null)
                 throw new ArgumentNullException(nameof(uri));
-
+            
             if (string.IsNullOrWhiteSpace(apiKey))
                 throw new ArgumentNullException(nameof(apiKey));
 
@@ -27,14 +27,25 @@ namespace ValueBlue.MovieSearch.Infrastructure.MovieServices.OmDb
 
         public async Task<Movie> GetMovieByTitleAsync(string title)
         {
-            var movie = await _uri
-                .SetQueryParams(new
-                {
-                    t = title,
-                    apikey = _apiKey
-                })
-                .ConfigureRequest(s => { s.Timeout = TimeSpan.FromSeconds(3); })
-                .GetJsonAsync<Movie>();
+            var movie = Movie.Empty;
+
+            try
+            {
+                movie = await _uri
+                    .SetQueryParams(new
+                    {
+                        t = title,
+                        apikey = _apiKey
+                    })
+                    .WithTimeout(TimeSpan.FromSeconds(3))
+                    .GetJsonAsync<Movie>();
+            }
+            catch (FlurlHttpTimeoutException)
+            {
+            }
+            catch (FlurlHttpException)
+            {
+            }
 
             return movie;
         }
