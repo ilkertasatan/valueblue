@@ -1,10 +1,7 @@
-﻿namespace ValueBlue.MovieSearch.Domain.Movies
+﻿namespace ValueBlue.MovieSearch.Api.UseCases.V1.SearchMovie
 {
-    public class Movie :
-        IMaybeExist
+    public sealed class MovieSearchByTitleResponse
     {
-        public static Movie Empty = new Movie();
-        
         public string Title { get; set; }
         public string Year { get; set; }
         public string Rated { get; set; }
@@ -22,10 +19,5 @@
         public string ImdbRating { get; set; }
         public string ImdbVotes { get; set; }
         public string ImdbId { get; set; }
-
-        public bool Exists()
-        {
-            return !Equals(Title, default(string));
-        }
     }
 }

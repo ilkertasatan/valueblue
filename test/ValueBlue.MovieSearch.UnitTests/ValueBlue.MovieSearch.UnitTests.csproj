@@ -17,6 +17,13 @@
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
+        <PackageReference Include="FluentAssertions" Version="5.10.3" />
+        <PackageReference Include="Moq" Version="4.16.0" />
+        <PackageReference Include="AutoFixture" Version="4.15.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\src\Services\MovieSearch\ValueBlue.MovieSearch.Api\ValueBlue.MovieSearch.Api.csproj" />
     </ItemGroup>
 
 </Project>
