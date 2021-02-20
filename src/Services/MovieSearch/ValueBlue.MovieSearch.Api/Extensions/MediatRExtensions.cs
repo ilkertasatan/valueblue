@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using MediatR;
+using Microsoft.Extensions.DependencyInjection;
+using ValueBlue.MovieSearch.Application.UseCases.SearchMovie;
 
 namespace ValueBlue.MovieSearch.Api.Extensions
 {
@@ -6,6 +8,8 @@ namespace ValueBlue.MovieSearch.Api.Extensions
     {
         public static IServiceCollection AddMediatR(this IServiceCollection services)
         {
+            services.AddMediatR(typeof(MovieSearchQuery).Assembly);
+
             return services;
         }
     }

@@ -24,7 +24,8 @@ namespace ValueBlue.MovieSearch.Api
                 .AddApiControllers()
                 .AddVersioning()
                 .AddApiHealthChecks()
-                .AddSwagger();
+                .AddSwagger()
+                .AddMediatR();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
