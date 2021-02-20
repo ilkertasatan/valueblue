@@ -3,7 +3,7 @@ using ValueBlue.MovieSearch.Domain.Movies.ValueObjects;
 
 namespace ValueBlue.MovieSearch.Domain.Movies
 {
-    public abstract class Movie : Entity<MovieId>
+    public abstract class MovieRequest : Entity<MovieId>
     {
         public abstract SearchToken SearchToken { get; }
         public abstract ImdbId ImdbId { get; }
