@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ValueBlue.MovieSearch.Api.Extensions;
+using ValueBlue.MovieSearch.Api.Middlewares;
 
 namespace ValueBlue.MovieSearch.Api
 {
@@ -37,6 +38,7 @@ namespace ValueBlue.MovieSearch.Api
 
             app.UseRouting();
             app.UseAuthorization();
+            app.UseMiddleware<AuthorizationByApiKeyMiddleware>();
             
             app.UseSwaggerDocumentation();
 
