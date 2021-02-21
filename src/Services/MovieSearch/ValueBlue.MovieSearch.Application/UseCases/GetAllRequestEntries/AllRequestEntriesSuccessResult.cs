@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using ValueBlue.MovieSearch.Application.Common.Interfaces;
-using ValueBlue.MovieSearch.Infrastructure.DataAccess.Entities;
+using ValueBlue.MovieSearch.Domain.RequestEntries;
 
 namespace ValueBlue.MovieSearch.Application.UseCases.GetAllRequestEntries
 {

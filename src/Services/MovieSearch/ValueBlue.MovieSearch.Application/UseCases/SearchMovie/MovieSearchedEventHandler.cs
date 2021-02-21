@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using MediatR;
 using ValueBlue.MovieSearch.Domain;
 using ValueBlue.MovieSearch.Domain.Movies;
-using RequestEntry = ValueBlue.MovieSearch.Infrastructure.DataAccess.Entities.RequestEntry;
+using ValueBlue.MovieSearch.Domain.RequestEntries;
 
 namespace ValueBlue.MovieSearch.Application.UseCases.SearchMovie
 {
