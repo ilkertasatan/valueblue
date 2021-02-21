@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
+using ValueBlue.MovieSearch.Domain;
+using ValueBlue.MovieSearch.Infrastructure.DataAccess.Repositories;
 
 namespace ValueBlue.MovieSearch.Api.Extensions
 {
@@ -19,6 +21,8 @@ namespace ValueBlue.MovieSearch.Api.Extensions
                 return mongoDatabase;
             });
             
+            services.AddScoped(typeof(IRepository<>), typeof(MongoDbRepository<>));
+
             return services;
         }
     }
