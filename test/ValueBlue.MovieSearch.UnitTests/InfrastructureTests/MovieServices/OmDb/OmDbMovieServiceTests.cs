@@ -44,5 +44,41 @@ namespace ValueBlue.MovieSearch.UnitTests.InfrastructureTests.MovieServices.OmDb
                 })
                 .Times(Once);
         }
+
+        [Fact]
+        public void Should_Throw_Exception_When_Uri_Is_Null()
+        {
+            Action act = () =>
+            {
+                new OmDbMovieService(null, "fake-api-key", new MovieTranslator())
+                    .GetMovieByTitleAsync("movie-title");
+            };
+            
+            act.Should().Throw<Exception>();
+        }
+        
+        [Fact]
+        public void Should_Throw_Exception_When_Uri_Is_Invalid()
+        {
+            Action act = () =>
+            {
+                new OmDbMovieService(new Uri("invalid"), "fake-api-key", new MovieTranslator())
+                    .GetMovieByTitleAsync("movie-title");
+            };
+            
+            act.Should().Throw<Exception>();
+        }
+        
+        [Fact]
+        public void Should_Throw_Exception_When_Api_Key_Is_Null_Or_Empty()
+        {
+            Action act = () =>
+            {
+                new OmDbMovieService(new Uri("http://fake-url.com/"), "", new MovieTranslator())
+                    .GetMovieByTitleAsync("movie-title");
+            };
+            
+            act.Should().Throw<Exception>();
+        }
     }
 }
