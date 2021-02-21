@@ -1,4 +1,6 @@
-﻿namespace ValueBlue.MovieSearch.Domain.Movies.ValueObjects
+﻿using System;
+
+namespace ValueBlue.MovieSearch.Domain.Movies.ValueObjects
 {
     public class Plot :
         ValueObject<Plot>
@@ -13,6 +15,16 @@
         public static Plot New(string plot)
         {
             return new Plot(plot);
+        }
+
+        protected override bool EqualsCore(Plot other)
+        {
+            return Value == other.Value;
+        }
+
+        protected override int GetHashCodeCore()
+        {
+            return HashCode.Combine(base.GetHashCode(), Value);
         }
     }
 }

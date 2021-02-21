@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace ValueBlue.MovieSearch.Domain.Movies.ValueObjects
 {
@@ -48,6 +49,21 @@ namespace ValueBlue.MovieSearch.Domain.Movies.ValueObjects
                 genres,
                 released,
                 country);
+        }
+
+        protected override bool EqualsCore(MovieInfo other)
+        {
+            return Title == other.Title &&
+                   Year == other.Year &&
+                   Rated == other.Rated &&
+                   Runtime == other.Runtime &&
+                   Released == other.Released &&
+                   Country == other.Country;
+        }
+
+        protected override int GetHashCodeCore()
+        {
+            return HashCode.Combine(base.GetHashCode(), Title, Year, Rated, Runtime, Released, Country);
         }
     }
 }

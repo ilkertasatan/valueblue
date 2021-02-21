@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net.Http;
 using System.Threading.Tasks;
+using AutoFixture;
 using FluentAssertions;
 using Flurl.Http.Testing;
 using ValueBlue.MovieSearch.Domain.Movies;
@@ -14,20 +15,16 @@ namespace ValueBlue.MovieSearch.UnitTests.InfrastructureTests.MovieServices.OmDb
         IClassFixture<StandardFixture>
     {
         private const int Once = 1;
-        private readonly StandardFixture _fixture;
-        
-        public OmDbMovieServiceTests(StandardFixture fixture)
-        {
-            _fixture = fixture;
-        }
-        
+
         [Fact]
         public async Task Should_Call_Api_Given_Movie_Title_And_Api_Key()
         {
-            var expectedMovie = _fixture.GivenMovie();
+            var expectedResponse = new Fixture().Create<OmDbMovieResponse>();
+            var movieTranslator = new MovieTranslator();
+            var expectedMovie = movieTranslator.Translate(expectedResponse);
             using var httpTest = new HttpTest();
-            httpTest.RespondWithJson(expectedMovie);
-            var sut = new OmDbMovieService(new Uri("http://fake-url.com/"), "fake-api-key");
+            httpTest.RespondWithJson(expectedResponse);
+            var sut = new OmDbMovieService(new Uri("http://fake-url.com/"), "fake-api-key", movieTranslator);
 
             var actualResult = await sut.GetMovieByTitleAsync("movie-title");
 

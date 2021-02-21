@@ -1,4 +1,6 @@
-﻿namespace ValueBlue.MovieSearch.Domain.Movies.ValueObjects
+﻿using System;
+
+namespace ValueBlue.MovieSearch.Domain.Movies.ValueObjects
 {
     public class Person :
         ValueObject<Person>
@@ -13,6 +15,16 @@
         public static Person New(string fullName)
         {
             return new Person(fullName);
+        }
+
+        protected override bool EqualsCore(Person other)
+        {
+            return FullName == other.FullName;
+        }
+
+        protected override int GetHashCodeCore()
+        {
+            return HashCode.Combine(base.GetHashCode(), FullName);
         }
     }
 }

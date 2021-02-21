@@ -1,4 +1,6 @@
-﻿namespace ValueBlue.MovieSearch.Domain.Movies.ValueObjects
+﻿using System;
+
+namespace ValueBlue.MovieSearch.Domain.Movies.ValueObjects
 {
     public sealed class ImdbInfo :
         ValueObject<ImdbInfo>
@@ -23,6 +25,18 @@
             string rating)
         {
             return new ImdbInfo(imdbId, votes, rating);
+        }
+
+        protected override bool EqualsCore(ImdbInfo other)
+        {
+            return ImdbId == other.ImdbId &&
+                   Votes == other.Votes &&
+                   Rating == other.Rating;
+        }
+
+        protected override int GetHashCodeCore()
+        {
+            return HashCode.Combine(GetHashCode(), ImdbId, Votes, Rating);
         }
     }
 }
