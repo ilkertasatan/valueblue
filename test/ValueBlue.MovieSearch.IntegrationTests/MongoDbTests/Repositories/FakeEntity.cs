@@ -5,6 +5,7 @@ namespace ValueBlue.MovieSearch.IntegrationTests.MongoDbTests.Repositories
     public sealed class FakeEntity :
         IEquatable<FakeEntity>
     {
+        public static readonly FakeEntity Empty = new FakeEntity();
         public FakeEntity()
         {
         }

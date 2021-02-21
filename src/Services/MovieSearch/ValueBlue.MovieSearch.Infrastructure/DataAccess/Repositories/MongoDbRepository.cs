@@ -48,6 +48,13 @@ namespace ValueBlue.MovieSearch.Infrastructure.DataAccess.Repositories
             return entity ?? new TEntity();
         }
 
+        public async Task DeleteOneAsync(
+            Expression<Func<TEntity, bool>> filter,
+            CancellationToken cancellationToken)
+        {
+            await Collection.DeleteOneAsync(filter, cancellationToken);
+        }
+
         public async Task<IEnumerable<TEntity>> FindManyAsync(
             Expression<Func<TEntity, bool>> filter,
             CancellationToken cancellationToken)

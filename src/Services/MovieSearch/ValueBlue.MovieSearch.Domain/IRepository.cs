@@ -10,6 +10,7 @@ namespace ValueBlue.MovieSearch.Domain
     {
         Task InsertOneAsync(T entity, CancellationToken cancellationToken);
         Task<T> FindOneAsync(Expression<Func<T, bool>> filter, CancellationToken cancellationToken);
+        Task DeleteOneAsync(Expression<Func<T, bool>> filter, CancellationToken cancellationToken);
         Task<IEnumerable<T>> FindManyAsync(Expression<Func<T, bool>> filter, CancellationToken cancellationToken);
     }
 }

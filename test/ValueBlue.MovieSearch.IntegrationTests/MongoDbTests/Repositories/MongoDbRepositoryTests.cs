@@ -2,6 +2,8 @@
 using System.Threading;
 using System.Threading.Tasks;
 using FluentAssertions;
+using ValueBlue.MovieSearch.Domain.Movies;
+using ValueBlue.MovieSearch.Domain.RequestEntries;
 using ValueBlue.MovieSearch.Infrastructure.DataAccess.Repositories;
 using Xunit;
 
@@ -70,6 +72,19 @@ namespace ValueBlue.MovieSearch.IntegrationTests.MongoDbTests.Repositories
                 .Contain(expectedEntity1)
                 .And
                 .Contain(expectedEntity2);
+        }
+        
+        [Fact]
+        public async Task Should_Delete_One()
+        {
+            var expectedId = Guid.NewGuid();
+            var expectedEntity = new FakeEntity(expectedId, "field1", "field2");
+            await _sut.InsertOneAsync(expectedEntity, _cancellationToken);
+
+            await _sut.DeleteOneAsync(x => x.Id == expectedId, _cancellationToken);
+
+            var actualEntity = await _sut.FindOneAsync(x => x.Id == expectedId, _cancellationToken);
+            actualEntity.Should().Be(FakeEntity.Empty);
         }
     }
 }
