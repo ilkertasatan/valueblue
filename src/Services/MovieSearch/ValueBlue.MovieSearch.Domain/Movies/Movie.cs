@@ -1,31 +1,75 @@
-﻿namespace ValueBlue.MovieSearch.Domain.Movies
+﻿using System.Collections.Generic;
+using ValueBlue.MovieSearch.Domain.Movies.ValueObjects;
+
+namespace ValueBlue.MovieSearch.Domain.Movies
 {
     public class Movie :
         IMaybeExist
     {
-        public static Movie Empty = new Movie();
-        
-        public string Title { get; set; }
-        public string Year { get; set; }
-        public string Rated { get; set; }
-        public string Released { get; set; }
-        public string Runtime { get; set; }
-        public string Genre { get; set; }
-        public string Director { get; set; }
-        public string Writer { get; set; }
-        public string Actors { get; set; }
-        public string Plot { get; set; }
-        public string Language { get; set; }
-        public string Country { get; set; }
-        public string Awards { get; set; }
-        public string Poster { get; set; }
-        public string ImdbRating { get; set; }
-        public string ImdbVotes { get; set; }
-        public string ImdbId { get; set; }
+        public static readonly Movie Empty = new Movie();
+
+        private Movie()
+        {
+        }
+
+        private Movie(
+            MovieInfo info,
+            IEnumerable<Person> directors,
+            IEnumerable<Person> writers,
+            IEnumerable<Person> actors,
+            Plot plot,
+            Language language,
+            Awards awards,
+            Poster poster,
+            ImdbInfo imdb)
+        {
+            Info = info;
+            Directors = directors;
+            Writers = writers;
+            Actors = actors;
+            Plot = plot;
+            Language = language;
+            Awards = awards;
+            Poster = poster;
+            Imdb = imdb;
+        }
+
+        public MovieInfo Info { get; }
+        public IEnumerable<Person> Directors { get; }
+        public IEnumerable<Person> Writers { get; }
+        public IEnumerable<Person> Actors { get; }
+        public Plot Plot { get; }
+        public Language Language { get; }
+        public Awards Awards { get; }
+        public Poster Poster { get; }
+        public ImdbInfo Imdb { get; }
 
         public bool Exists()
         {
-            return !Equals(Title, default(string));
+            return !Equals(Info, default(MovieInfo));
+        }
+
+        public static Movie New(
+            MovieInfo info,
+            IEnumerable<Person> directors,
+            IEnumerable<Person> writers,
+            IEnumerable<Person> actors,
+            Plot plot,
+            Language language,
+            Awards awards,
+            Poster poster,
+            ImdbInfo imdb)
+        {
+            return new Movie(
+                info,
+                directors,
+                writers,
+                actors,
+                plot,
+                language,
+                awards,
+                poster,
+                imdb);
         }
     }
 }
