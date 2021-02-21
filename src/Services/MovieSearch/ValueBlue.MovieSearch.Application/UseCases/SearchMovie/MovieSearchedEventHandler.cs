@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using MediatR;
 using ValueBlue.MovieSearch.Domain;
 using ValueBlue.MovieSearch.Domain.Movies;
-using ValueBlue.MovieSearch.Infrastructure.DataAccess.Entities;
+using RequestEntry = ValueBlue.MovieSearch.Infrastructure.DataAccess.Entities.RequestEntry;
 
 namespace ValueBlue.MovieSearch.Application.UseCases.SearchMovie
 {
@@ -20,7 +20,7 @@ namespace ValueBlue.MovieSearch.Application.UseCases.SearchMovie
 
         public Task Handle(MovieSearched notification, CancellationToken cancellationToken)
         {
-            var movieRequest = new RequestEntryEntity(
+            var movieRequest = new RequestEntry(
                 notification.SearchToken,
                 notification.ImdbId,
                 notification.ProcessingTime,

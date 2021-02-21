@@ -1,18 +1,13 @@
 ﻿using System;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
-using ValueBlue.MovieSearch.Domain.Movies;
 
 namespace ValueBlue.MovieSearch.Infrastructure.DataAccess.Entities
 {
-    public sealed class RequestEntryEntity :
-        RequestEntry
+    public sealed class RequestEntry :
+        Domain.RequestEntries.RequestEntry
     {
-        private RequestEntryEntity()
-        {
-        }
-        
-        public RequestEntryEntity(
+        public RequestEntry(
             string searchToken,
             string imdbId,
             long processingTime,
@@ -26,22 +21,23 @@ namespace ValueBlue.MovieSearch.Infrastructure.DataAccess.Entities
             Timestamp = timestamp;
             IpAddress = ipAddress;
         }
-        
-        public override object Id { get; }
 
-        [BsonElement("search_token")]
-        public override string SearchToken { get; }
-        
-        [BsonElement("imdbID")]
-        public override string ImdbId { get; }
-        
+
+        public override object Id { get; protected set; }
+
+        [BsonElement("search_token")] 
+        public override string SearchToken { get; protected set; }
+
+        [BsonElement("imdbID")] 
+        public override string ImdbId { get; protected set; }
+
         [BsonElement("processing_time_ms")]
-        public override long ProcessingTime { get; }
-        
+        public override long ProcessingTime { get; protected set; }
+
         [BsonElement("timestamp")]
-        public override DateTime Timestamp { get; }
-        
+        public override DateTime Timestamp { get; protected set; }
+
         [BsonElement("ip_address")]
-        public override string IpAddress { get; }
+        public override string IpAddress { get; protected set; }
     }
 }
