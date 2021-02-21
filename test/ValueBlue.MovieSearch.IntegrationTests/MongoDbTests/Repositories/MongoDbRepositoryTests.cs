@@ -25,7 +25,7 @@ namespace ValueBlue.MovieSearch.IntegrationTests.MongoDbTests.Repositories
         }
 
         [Fact]
-        public async Task Insert_One()
+        public async Task Should_Insert_One()
         {
             var expectedEntity = new FakeEntity(ObjectId.GenerateNewId(), "field1", "field2");
 
@@ -37,7 +37,7 @@ namespace ValueBlue.MovieSearch.IntegrationTests.MongoDbTests.Repositories
         }
         
         [Fact]
-        public async Task Find_One()
+        public async Task Should_Find_One()
         {
             var expectedId = ObjectId.GenerateNewId();
             var expectedEntity = new FakeEntity(expectedId, "field1", "field2");
@@ -52,7 +52,7 @@ namespace ValueBlue.MovieSearch.IntegrationTests.MongoDbTests.Repositories
         }
 
         [Fact]
-        public async Task Find_Many()
+        public async Task Should_Find_Many()
         {
             var expectedField = Guid.NewGuid().ToString();
             var expectedEntity1 = new FakeEntity(ObjectId.GenerateNewId(), expectedField, "field2");
