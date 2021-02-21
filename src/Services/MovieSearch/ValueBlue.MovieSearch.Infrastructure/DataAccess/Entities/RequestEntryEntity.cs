@@ -5,14 +5,14 @@ using ValueBlue.MovieSearch.Domain.Movies;
 
 namespace ValueBlue.MovieSearch.Infrastructure.DataAccess.Entities
 {
-    public sealed class MovieSearchRequestEntity :
-        MovieSearchRequest
+    public sealed class RequestEntryEntity :
+        RequestEntry
     {
-        private MovieSearchRequestEntity()
+        private RequestEntryEntity()
         {
         }
         
-        public MovieSearchRequestEntity(
+        public RequestEntryEntity(
             string searchToken,
             string imdbId,
             long processingTime,

@@ -2,7 +2,7 @@
 
 namespace ValueBlue.MovieSearch.Domain.Movies
 {
-    public abstract class MovieSearchRequest : 
+    public abstract class RequestEntry : 
         IAggregate<object>,
         IMaybeExist
     {

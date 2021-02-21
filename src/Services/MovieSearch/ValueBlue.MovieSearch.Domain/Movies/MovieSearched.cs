@@ -3,10 +3,10 @@ using MediatR;
 
 namespace ValueBlue.MovieSearch.Domain.Movies
 {
-    public class MovieSearchRequested :
+    public class MovieSearched :
         INotification
     {
-        public MovieSearchRequested(
+        public MovieSearched(
             string searchToken,
             string imdbId,
             long processingTime,

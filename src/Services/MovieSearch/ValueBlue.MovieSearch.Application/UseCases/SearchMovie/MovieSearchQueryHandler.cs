@@ -33,7 +33,7 @@ namespace ValueBlue.MovieSearch.Application.UseCases.SearchMovie
 
             var since = stopwatch.ElapsedMilliseconds;
             await _mediator.Publish(
-                new MovieSearchRequested(
+                new MovieSearched(
                     movie.Info.Title,
                     movie.Imdb.ImdbId,
                     since,

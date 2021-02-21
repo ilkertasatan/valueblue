@@ -7,20 +7,20 @@ using ValueBlue.MovieSearch.Infrastructure.DataAccess.Entities;
 
 namespace ValueBlue.MovieSearch.Application.UseCases.SearchMovie
 {
-    public class MovieSearchRequestedEventHandler :
-        INotificationHandler<MovieSearchRequested>
+    public class MovieSearchedEventHandler :
+        INotificationHandler<MovieSearched>
     {
-        private readonly IRepository<MovieSearchRequest> _repository;
+        private readonly IRepository<RequestEntry> _repository;
 
-        public MovieSearchRequestedEventHandler(
-            IRepository<MovieSearchRequest> repository)
+        public MovieSearchedEventHandler(
+            IRepository<RequestEntry> repository)
         {
             _repository = repository;
         }
 
-        public Task Handle(MovieSearchRequested notification, CancellationToken cancellationToken)
+        public Task Handle(MovieSearched notification, CancellationToken cancellationToken)
         {
-            var movieRequest = new MovieSearchRequestEntity(
+            var movieRequest = new RequestEntryEntity(
                 notification.SearchToken,
                 notification.ImdbId,
                 notification.ProcessingTime,
