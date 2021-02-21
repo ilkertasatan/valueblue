@@ -1,5 +1,6 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
+using AutoFixture;
 using FluentAssertions;
 using MediatR;
 using Moq;
@@ -10,16 +11,13 @@ using Xunit;
 
 namespace ValueBlue.MovieSearch.UnitTests.UseCaseTests.SearchMovie
 {
-    public class MovieSearchQueryHandlerTests :
-        IClassFixture<StandardFixture>
+    public class MovieSearchQueryHandlerTests 
     {
-        private readonly StandardFixture _fixture;
         private readonly Mock<ISearchMovieByTitle> _movieServiceMock;
         private readonly MovieSearchQueryHandler _sut;
 
-        public MovieSearchQueryHandlerTests(StandardFixture fixture)
+        public MovieSearchQueryHandlerTests()
         {
-            _fixture = fixture;
             _movieServiceMock = new Mock<ISearchMovieByTitle>();
             _sut = new MovieSearchQueryHandler(
                 new Mock<IMediator>().Object,
@@ -29,7 +27,7 @@ namespace ValueBlue.MovieSearch.UnitTests.UseCaseTests.SearchMovie
         [Fact]
         public async Task Should_Return_Success_Result_When_Movie_Is_Found()
         {
-            var expectedMovie = _fixture.GivenMovie();
+            var expectedMovie = GivenMovie();
             _movieServiceMock
                 .Setup(x => x.GetMovieByTitleAsync(It.IsAny<string>()))
                 .ReturnsAsync(expectedMovie);
@@ -54,6 +52,11 @@ namespace ValueBlue.MovieSearch.UnitTests.UseCaseTests.SearchMovie
                 await _sut.Handle(new MovieSearchQuery("movie-title", "ip-address"), CancellationToken.None);
 
             actualResult.Should().BeOfType<MovieNotFoundResult>();
+        }
+        
+        private static Movie GivenMovie()
+        {
+            return new Fixture().Create<Movie>();
         }
     }
 }

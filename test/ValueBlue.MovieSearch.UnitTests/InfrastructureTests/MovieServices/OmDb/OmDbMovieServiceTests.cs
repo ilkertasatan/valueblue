@@ -11,8 +11,7 @@ using Xunit;
 
 namespace ValueBlue.MovieSearch.UnitTests.InfrastructureTests.MovieServices.OmDb
 {
-    public class OmDbMovieServiceTests : 
-        IClassFixture<StandardFixture>
+    public class OmDbMovieServiceTests
     {
         private const int Once = 1;
 
