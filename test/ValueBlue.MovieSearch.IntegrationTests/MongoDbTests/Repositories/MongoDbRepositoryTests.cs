@@ -2,7 +2,6 @@
 using System.Threading;
 using System.Threading.Tasks;
 using FluentAssertions;
-using MongoDB.Bson;
 using ValueBlue.MovieSearch.Infrastructure.DataAccess.Repositories;
 using Xunit;
 
@@ -27,11 +26,12 @@ namespace ValueBlue.MovieSearch.IntegrationTests.MongoDbTests.Repositories
         [Fact]
         public async Task Should_Insert_One()
         {
-            var expectedEntity = new FakeEntity(ObjectId.GenerateNewId(), "field1", "field2");
+            var expectedId = Guid.NewGuid();
+            var expectedEntity = new FakeEntity(expectedId, "field1", "field2");
 
             await _sut.InsertOneAsync(expectedEntity, _cancellationToken);
 
-            var actualEntity = await _sut.FindOneAsync(x => x.Id == expectedEntity.Id, _cancellationToken);
+            var actualEntity = await _sut.FindOneAsync(x => x.Id == expectedId, _cancellationToken);
             actualEntity.Should()
                 .BeEquivalentTo(expectedEntity);
         }
@@ -39,7 +39,7 @@ namespace ValueBlue.MovieSearch.IntegrationTests.MongoDbTests.Repositories
         [Fact]
         public async Task Should_Find_One()
         {
-            var expectedId = ObjectId.GenerateNewId();
+            var expectedId = Guid.NewGuid();
             var expectedEntity = new FakeEntity(expectedId, "field1", "field2");
             await _sut.InsertOneAsync(expectedEntity, _cancellationToken);
 
@@ -55,8 +55,8 @@ namespace ValueBlue.MovieSearch.IntegrationTests.MongoDbTests.Repositories
         public async Task Should_Find_Many()
         {
             var expectedField = Guid.NewGuid().ToString();
-            var expectedEntity1 = new FakeEntity(ObjectId.GenerateNewId(), expectedField, "field2");
-            var expectedEntity2 = new FakeEntity(ObjectId.GenerateNewId(), expectedField, "field2");
+            var expectedEntity1 = new FakeEntity(Guid.NewGuid(), expectedField, "field2");
+            var expectedEntity2 = new FakeEntity(Guid.NewGuid(), expectedField, "field2");
             await _sut.InsertOneAsync(expectedEntity1, _cancellationToken);
             await _sut.InsertOneAsync(expectedEntity2, _cancellationToken);
 

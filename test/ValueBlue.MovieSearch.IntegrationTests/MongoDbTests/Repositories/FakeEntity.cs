@@ -1,21 +1,24 @@
 ﻿using System;
-using MongoDB.Bson;
 
 namespace ValueBlue.MovieSearch.IntegrationTests.MongoDbTests.Repositories
 {
     public sealed class FakeEntity :
         IEquatable<FakeEntity>
     {
-        public FakeEntity(ObjectId id, string field1, string field2)
+        public FakeEntity()
+        {
+        }
+
+        public FakeEntity(Guid id, string field1, string field2)
         {
             Id = id;
             Field1 = field1;
             Field2 = field2;
         }
 
-        public ObjectId Id { get; }
-        public string Field1 { get; }
-        public string Field2 { get; }
+        public Guid Id { get; private set; }
+        public string Field1 { get; private set; }
+        public string Field2 { get; private set; }
 
         public bool Equals(FakeEntity other)
         {

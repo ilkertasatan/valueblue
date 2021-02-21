@@ -9,18 +9,15 @@ using ValueBlue.MovieSearch.Domain;
 
 namespace ValueBlue.MovieSearch.Infrastructure.DataAccess.Repositories
 {
-    public class MongoDbRepository<TEntity> : IRepository<TEntity>
+    public class MongoDbRepository<TEntity> : IRepository<TEntity> where TEntity : new()
     {
-        private readonly IMongoDatabase _mongoDb;
-
         public MongoDbRepository(IMongoDatabase mongoDb)
         {
-            _mongoDb = mongoDb;
+            Collection = mongoDb.GetCollection<TEntity>(typeof(TEntity).Name.Pluralize());
         }
 
-        protected IMongoCollection<TEntity> Collection =>
-            _mongoDb.GetCollection<TEntity>(typeof(TEntity).Name.Pluralize());
-
+        private IMongoCollection<TEntity> Collection { get; }
+        
         public async Task InsertOneAsync(
             TEntity entity,
             CancellationToken cancellationToken)
@@ -38,19 +35,17 @@ namespace ValueBlue.MovieSearch.Infrastructure.DataAccess.Repositories
 
                 throw;
             }
-            catch (Exception e)
-            {
-                throw; 
-            }
         }
 
         public async Task<TEntity> FindOneAsync(
             Expression<Func<TEntity, bool>> filter,
             CancellationToken cancellationToken)
         {
-            return await Collection
+            var entity = await Collection
                 .Find(filter)
                 .FirstOrDefaultAsync(cancellationToken);
+            
+            return entity ?? new TEntity();
         }
 
         public async Task<IEnumerable<TEntity>> FindManyAsync(
