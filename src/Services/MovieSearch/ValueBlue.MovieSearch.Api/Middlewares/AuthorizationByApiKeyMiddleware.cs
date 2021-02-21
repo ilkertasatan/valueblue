@@ -19,7 +19,7 @@ namespace ValueBlue.MovieSearch.Api.Middlewares
 
         public async Task Invoke(HttpContext context)
         {
-            if (context.Request.Path.Value.Contains("/movie-search-requests"))
+            if (context.Request.Path.Value.Contains("/request-entries"))
             {
                 var apiKey = context.Request.Headers["x-api-key"];
                 var omDbApiKey = _configuration["MovieService:OMDb:ApiKey"];

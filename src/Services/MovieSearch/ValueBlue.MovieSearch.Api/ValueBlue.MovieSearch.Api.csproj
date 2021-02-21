@@ -27,10 +27,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="UseCases\V1" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\ValueBlue.MovieSearch.Application\ValueBlue.MovieSearch.Application.csproj" />
       <ProjectReference Include="..\ValueBlue.MovieSearch.Infrastructure\ValueBlue.MovieSearch.Infrastructure.csproj" />
     </ItemGroup>
