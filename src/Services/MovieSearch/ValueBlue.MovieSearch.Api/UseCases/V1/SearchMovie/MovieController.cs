@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ValueBlue.MovieSearch.Api.Extensions;
 using ValueBlue.MovieSearch.Application.UseCases.SearchMovie;
 
 namespace ValueBlue.MovieSearch.Api.UseCases.V1.SearchMovie
@@ -25,10 +26,10 @@ namespace ValueBlue.MovieSearch.Api.UseCases.V1.SearchMovie
         [ProducesResponseType(StatusCodes.Status502BadGateway)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> SearchMovieByTitleAsync(
-            [FromQuery(Name = "t")] [Required] string title)
+            [FromQuery(Name = "t")] [Required] string movieTitle)
         {
-            var result = await _mediator.Send(new MovieSearchQuery(title));
-            return Output.For(result);
+            var queryResult = await _mediator.Send(new MovieSearchQuery(movieTitle, Request.IpAddress()));
+            return Output.For(queryResult);
         }
     }
 }

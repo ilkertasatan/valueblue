@@ -1,6 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using FluentAssertions;
+using MediatR;
 using Moq;
 using ValueBlue.MovieSearch.Application.UseCases.SearchMovie;
 using ValueBlue.MovieSearch.Domain;
@@ -20,7 +21,9 @@ namespace ValueBlue.MovieSearch.UnitTests.UseCaseTests.SearchMovie
         {
             _fixture = fixture;
             _movieServiceMock = new Mock<ISearchMovieByTitle>();
-            _sut = new MovieSearchQueryHandler(_movieServiceMock.Object);
+            _sut = new MovieSearchQueryHandler(
+                new Mock<IMediator>().Object,
+                _movieServiceMock.Object);
         }
 
         [Fact]
@@ -31,7 +34,8 @@ namespace ValueBlue.MovieSearch.UnitTests.UseCaseTests.SearchMovie
                 .Setup(x => x.GetMovieByTitleAsync(It.IsAny<string>()))
                 .ReturnsAsync(expectedMovie);
 
-            var actualResult = await _sut.Handle(new MovieSearchQuery("movie-title"), CancellationToken.None);
+            var actualResult =
+                await _sut.Handle(new MovieSearchQuery("movie-title", "ip-address"), CancellationToken.None);
 
             actualResult.Should()
                 .BeOfType<MovieSearchSuccessResult>()
@@ -46,7 +50,8 @@ namespace ValueBlue.MovieSearch.UnitTests.UseCaseTests.SearchMovie
                 .Setup(x => x.GetMovieByTitleAsync(It.IsAny<string>()))
                 .ReturnsAsync(Movie.Empty);
 
-            var actualResult = await _sut.Handle(new MovieSearchQuery("movie-title"), CancellationToken.None);
+            var actualResult =
+                await _sut.Handle(new MovieSearchQuery("movie-title", "ip-address"), CancellationToken.None);
 
             actualResult.Should().BeOfType<MovieNotFoundResult>();
         }

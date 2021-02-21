@@ -5,11 +5,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="MediatR" Version="8.1.0" />
+        <PackageReference Include="MediatR" Version="9.0.0" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\ValueBlue.MovieSearch.Domain\ValueBlue.MovieSearch.Domain.csproj" />
+      <ProjectReference Include="..\ValueBlue.MovieSearch.Infrastructure\ValueBlue.MovieSearch.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>

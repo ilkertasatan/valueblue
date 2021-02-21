@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using System.Linq;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ValueBlue.MovieSearch.Application.Common.Interfaces;
 using ValueBlue.MovieSearch.Application.UseCases.SearchMovie;
@@ -20,23 +21,23 @@ namespace ValueBlue.MovieSearch.Api.UseCases.V1.SearchMovie
         {
             return new OkObjectResult(new MovieSearchByTitleResponse
             {
-                Title = movie.Title,
-                Year = movie.Year,
-                Rated = movie.Rated,
-                Released = movie.Released,
-                Runtime = movie.Runtime,
-                Genre = movie.Genre,
-                Director = movie.Director,
-                Writer = movie.Writer,
-                Actors = movie.Actors,
-                Plot = movie.Plot,
-                Language = movie.Language,
-                Country = movie.Country,
-                Awards = movie.Awards,
-                Poster = movie.Poster,
-                ImdbRating = movie.ImdbRating,
-                ImdbVotes = movie.ImdbVotes,
-                ImdbId = movie.ImdbId
+                Title = movie.Info.Title,
+                Year = movie.Info.Year,
+                Rated = movie.Info.Rated,
+                Released = movie.Info.Released,
+                Runtime = movie.Info.Runtime,
+                Genre = string.Join(", ", movie.Info.Genres.Select(g => g.Name)),
+                Director = string.Join(", ", movie.Directors.Select(p => p.FullName)),
+                Writer = string.Join(", ", movie.Writers.Select(p => p.FullName)),
+                Actors = string.Join(", ", movie.Actors.Select(p => p.FullName)),
+                Plot = movie.Plot.Value,
+                Language = movie.Language.Name,
+                Country = movie.Info.Country,
+                Awards = movie.Awards.Name,
+                Poster = movie.Poster.Url,
+                ImdbId = movie.Imdb.ImdbId,
+                ImdbRating = movie.Imdb.Rating,
+                ImdbVotes = movie.Imdb.Votes,
             });
         }
 

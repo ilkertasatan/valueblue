@@ -6,11 +6,13 @@ namespace ValueBlue.MovieSearch.Application.UseCases.SearchMovie
     public sealed class MovieSearchQuery : 
         IRequest<IQueryResult>
     {
-        public MovieSearchQuery(string title)
+        public MovieSearchQuery(string movieTitle, string ipAddress)
         {
-            Title = title;
+            MovieTitle = movieTitle;
+            IpAddress = ipAddress;
         }
 
-        public string Title { get; }
+        public string MovieTitle { get; }
+        public string IpAddress { get; }
     }
 }
