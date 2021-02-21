@@ -12,8 +12,8 @@ namespace ValueBlue.MovieSearch.Api.UseCases.V1.SearchMovie
         {
             services.AddScoped<ISearchMovieByTitle>(provider =>
             {
-                var uri = new Uri(configuration["MovieDatabase:OMDb:ApiUrl"]);
-                var apiKey = configuration["MovieDatabase:OMDb:ApiKey"];
+                var uri = new Uri(configuration["MovieService:OMDb:ApiUrl"]);
+                var apiKey = configuration["MovieService:OMDb:ApiKey"];
 
                 return new OmDbMovieService(uri, apiKey);
             });
