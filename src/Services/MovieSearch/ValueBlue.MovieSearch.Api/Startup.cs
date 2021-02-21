@@ -26,6 +26,7 @@ namespace ValueBlue.MovieSearch.Api
                 .AddApiHealthChecks()
                 .AddSwagger()
                 .AddMediatR()
+                .AddMongoDb(Configuration)
                 .AddUseCases(Configuration);
         }
 
