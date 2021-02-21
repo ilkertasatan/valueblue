@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using MediatR;
 using ValueBlue.MovieSearch.Application.Common.Interfaces;
+using ValueBlue.MovieSearch.Application.Common.Model;
 using ValueBlue.MovieSearch.Domain;
 using ValueBlue.MovieSearch.Domain.RequestEntries;
 

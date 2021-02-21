@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ValueBlue.MovieSearch.Application.Common.Interfaces;
+using ValueBlue.MovieSearch.Application.Common.Model;
 using ValueBlue.MovieSearch.Application.UseCases.GetSingleRequestEntry;
 using ValueBlue.MovieSearch.Domain.RequestEntries;
 

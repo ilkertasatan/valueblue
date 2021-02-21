@@ -12,8 +12,4 @@ namespace ValueBlue.MovieSearch.Application.UseCases.GetSingleRequestEntry
 
         public RequestEntry RequestEntry { get; }
     }
-    
-    public class RequestEntryNotFoundResult : ICommandResult, IQueryResult
-    {
-    }
 }

@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ValueBlue.MovieSearch.Application.Common.Interfaces;
+using ValueBlue.MovieSearch.Application.Common.Model;
 using ValueBlue.MovieSearch.Application.UseCases.DeleteRequestEntry;
-using ValueBlue.MovieSearch.Application.UseCases.GetSingleRequestEntry;
 
 namespace ValueBlue.MovieSearch.Api.UseCases.V1.DeleteRequestEntry
 {
