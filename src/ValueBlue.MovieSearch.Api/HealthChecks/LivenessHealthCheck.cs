@@ -4,7 +4,8 @@ using Microsoft.Extensions.Diagnostics.HealthChecks;
 
 namespace ValueBlue.MovieSearch.Api.HealthChecks
 {
-    public class LivenessHealthCheck : IHealthCheck
+    public class LivenessHealthCheck :
+        IHealthCheck
     {
         public Task<HealthCheckResult> CheckHealthAsync(
             HealthCheckContext context,

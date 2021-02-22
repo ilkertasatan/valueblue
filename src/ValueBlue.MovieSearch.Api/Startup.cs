@@ -24,7 +24,7 @@ namespace ValueBlue.MovieSearch.Api
             services
                 .AddApiControllers()
                 .AddVersioning()
-                .AddApiHealthChecks()
+                .AddApiHealthChecks(Configuration)
                 .AddSwagger()
                 .AddMediatR()
                 .AddMongoDb(Configuration)
