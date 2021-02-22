@@ -12,7 +12,7 @@ namespace ValueBlue.MovieSearch.Api.UseCases.V1.SearchMovie
         public static IActionResult For(IQueryResult output) =>
             output switch
             {
-                MovieSearchSuccessResult result => Ok(result.Movie),
+                SearchMovieSuccessResult result => Ok(result.Movie),
                 MovieNotFoundResult result => NotFound(result),
                 _ => InternalServerError()
             };

@@ -3,9 +3,9 @@ using ValueBlue.MovieSearch.Domain.Movies;
 
 namespace ValueBlue.MovieSearch.Application.UseCases.SearchMovie
 {
-    public class MovieSearchSuccessResult : IQueryResult
+    public class SearchMovieSuccessResult : IQueryResult
     {
-        public MovieSearchSuccessResult(Movie movie)
+        public SearchMovieSuccessResult(Movie movie)
         {
             Movie = movie;
         }

@@ -3,9 +3,10 @@ using ValueBlue.MovieSearch.Domain.RequestEntries;
 
 namespace ValueBlue.MovieSearch.Application.UseCases.GetSingleRequestEntry
 {
-    public class SingleRequestEntrySuccessResult : IQueryResult
+    public class GetSingleRequestEntrySuccessResult :
+        IQueryResult
     {
-        public SingleRequestEntrySuccessResult(RequestEntry requestEntry)
+        public GetSingleRequestEntrySuccessResult(RequestEntry requestEntry)
         {
             RequestEntry = requestEntry;
         }

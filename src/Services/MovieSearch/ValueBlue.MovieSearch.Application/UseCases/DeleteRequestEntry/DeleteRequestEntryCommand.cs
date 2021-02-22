@@ -4,9 +4,9 @@ using ValueBlue.MovieSearch.Application.Common.Interfaces;
 
 namespace ValueBlue.MovieSearch.Application.UseCases.DeleteRequestEntry
 {
-    public sealed class DeletionOfRequestEntryCommand : IRequest<ICommandResult>
+    public sealed class DeleteRequestEntryCommand : IRequest<ICommandResult>
     {
-        public DeletionOfRequestEntryCommand(Guid id)
+        public DeleteRequestEntryCommand(Guid id)
         {
             Id = id;
         }

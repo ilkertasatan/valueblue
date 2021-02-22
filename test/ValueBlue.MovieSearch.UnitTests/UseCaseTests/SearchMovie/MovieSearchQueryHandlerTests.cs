@@ -14,12 +14,12 @@ namespace ValueBlue.MovieSearch.UnitTests.UseCaseTests.SearchMovie
     public class MovieSearchQueryHandlerTests 
     {
         private readonly Mock<ISearchMovieByTitle> _movieServiceMock;
-        private readonly MovieSearchQueryHandler _sut;
+        private readonly SearchMovieQueryHandler _sut;
 
         public MovieSearchQueryHandlerTests()
         {
             _movieServiceMock = new Mock<ISearchMovieByTitle>();
-            _sut = new MovieSearchQueryHandler(
+            _sut = new SearchMovieQueryHandler(
                 new Mock<IMediator>().Object,
                 _movieServiceMock.Object);
         }
@@ -33,10 +33,10 @@ namespace ValueBlue.MovieSearch.UnitTests.UseCaseTests.SearchMovie
                 .ReturnsAsync(expectedMovie);
 
             var actualResult =
-                await _sut.Handle(new MovieSearchQuery("movie-title", "ip-address"), CancellationToken.None);
+                await _sut.Handle(new SearchMovieQuery("movie-title", "ip-address"), CancellationToken.None);
 
             actualResult.Should()
-                .BeOfType<MovieSearchSuccessResult>()
+                .BeOfType<SearchMovieSuccessResult>()
                 .Which.Movie
                 .Should().BeEquivalentTo(expectedMovie);
         }
@@ -49,7 +49,7 @@ namespace ValueBlue.MovieSearch.UnitTests.UseCaseTests.SearchMovie
                 .ReturnsAsync(Movie.Empty);
 
             var actualResult =
-                await _sut.Handle(new MovieSearchQuery("movie-title", "ip-address"), CancellationToken.None);
+                await _sut.Handle(new SearchMovieQuery("movie-title", "ip-address"), CancellationToken.None);
 
             actualResult.Should().BeOfType<MovieNotFoundResult>();
         }

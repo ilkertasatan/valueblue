@@ -12,7 +12,7 @@ namespace ValueBlue.MovieSearch.Api.UseCases.V1.GetSingleRequestEntry
         public static IActionResult For(IQueryResult output) =>
             output switch
             {
-                SingleRequestEntrySuccessResult result => Ok(result.RequestEntry),
+                GetSingleRequestEntrySuccessResult result => Ok(result.RequestEntry),
                 RequestEntryNotFoundResult _ => NotFound(),
                 _ => InternalServerError()
             };

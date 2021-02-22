@@ -11,12 +11,15 @@ namespace ValueBlue.MovieSearch.Application.UseCases.GetRequestEntriesUsageRepor
     {
         private readonly IUsageReportRepository _repository;
 
-        public GetRequestEntriesUsageReportQueryHandler(IUsageReportRepository repository)
+        public GetRequestEntriesUsageReportQueryHandler(
+            IUsageReportRepository repository)
         {
             _repository = repository;
         }
 
-        public async Task<IQueryResult> Handle(GetRequestEntriesUsageReportQuery request, CancellationToken cancellationToken)
+        public async Task<IQueryResult> Handle(
+            GetRequestEntriesUsageReportQuery request,
+            CancellationToken cancellationToken)
         {
             var usages = await _repository.GroupByTimestampAsync(request.Timestamp, cancellationToken);
             return new GetRequestEntriesUsageReportSuccessResult(usages);

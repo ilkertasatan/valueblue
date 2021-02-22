@@ -16,12 +16,12 @@ namespace ValueBlue.MovieSearch.UnitTests.UseCaseTests.GetSingleRequestEntry
     public class SingleRequestEntryQueryHandlerTests
     {
         private readonly Mock<IRepository<RequestEntry>> _repositoryMock;
-        private readonly SingleRequestEntryQueryHandler _sut;
+        private readonly GetSingleRequestEntryQueryHandler _sut;
 
         public SingleRequestEntryQueryHandlerTests()
         {
             _repositoryMock = new Mock<IRepository<RequestEntry>>();
-            _sut = new SingleRequestEntryQueryHandler(_repositoryMock.Object);
+            _sut = new GetSingleRequestEntryQueryHandler(_repositoryMock.Object);
         }
 
         [Fact]
@@ -34,10 +34,10 @@ namespace ValueBlue.MovieSearch.UnitTests.UseCaseTests.GetSingleRequestEntry
                     It.IsAny<CancellationToken>()))
                 .ReturnsAsync(expectedRequestEntry);
 
-            var actualResult = await _sut.Handle(new SingleRequestEntryQuery(Guid.NewGuid()), CancellationToken.None);
+            var actualResult = await _sut.Handle(new GetSingleRequestEntryQuery(Guid.NewGuid()), CancellationToken.None);
 
             actualResult.Should()
-                .BeOfType<SingleRequestEntrySuccessResult>()
+                .BeOfType<GetSingleRequestEntrySuccessResult>()
                 .Which.RequestEntry
                 .Should().BeEquivalentTo(expectedRequestEntry);
         }
@@ -51,7 +51,7 @@ namespace ValueBlue.MovieSearch.UnitTests.UseCaseTests.GetSingleRequestEntry
                     It.IsAny<CancellationToken>()))
                 .ReturnsAsync(RequestEntry.Empty);
             
-            var actualResult = await _sut.Handle(new SingleRequestEntryQuery(Guid.NewGuid()), CancellationToken.None);
+            var actualResult = await _sut.Handle(new GetSingleRequestEntryQuery(Guid.NewGuid()), CancellationToken.None);
 
             actualResult.Should().BeOfType<RequestEntryNotFoundResult>();
         }

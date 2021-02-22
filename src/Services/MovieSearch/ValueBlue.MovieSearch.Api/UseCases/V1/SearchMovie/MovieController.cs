@@ -28,7 +28,7 @@ namespace ValueBlue.MovieSearch.Api.UseCases.V1.SearchMovie
         public async Task<IActionResult> SearchMovieByTitleAsync(
             [FromQuery(Name = "t")] [Required] string movieTitle)
         {
-            var queryResult = await _mediator.Send(new MovieSearchQuery(movieTitle, Request.IpAddress()));
+            var queryResult = await _mediator.Send(new SearchMovieQuery(movieTitle, Request.IpAddress()));
             return Output.For(queryResult);
         }
     }

@@ -4,9 +4,10 @@ using ValueBlue.MovieSearch.Application.Common.Interfaces;
 
 namespace ValueBlue.MovieSearch.Application.UseCases.GetRequestEntriesByDate
 {
-    public class RequestEntryByDateQuery : IRequest<IQueryResult>
+    public class GetRequestEntriesByDateQuery :
+        IRequest<IQueryResult>
     {
-        public RequestEntryByDateQuery(
+        public GetRequestEntriesByDateQuery(
             DateTime from,
             DateTime end)
         {

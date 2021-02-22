@@ -20,8 +20,8 @@ namespace ValueBlue.MovieSearch.UnitTests.UseCaseTests.GetSingleRequestEntry
             var expectedRequestEntry = new RequestEntry("search-token", "imdbId", 100, DateTime.Now, "127.0.0.1");
             var mediatorMock = new Mock<IMediator>();
             mediatorMock
-                .Setup(x => x.Send(It.IsAny<SingleRequestEntryQuery>(), It.IsAny<CancellationToken>()))
-                .ReturnsAsync(new SingleRequestEntrySuccessResult(expectedRequestEntry));
+                .Setup(x => x.Send(It.IsAny<GetSingleRequestEntryQuery>(), It.IsAny<CancellationToken>()))
+                .ReturnsAsync(new GetSingleRequestEntrySuccessResult(expectedRequestEntry));
             var sut = new RequestEntryController(mediatorMock.Object);
 
             var actualResult = await sut.GetSingleRequestEntryAsync(Guid.NewGuid());

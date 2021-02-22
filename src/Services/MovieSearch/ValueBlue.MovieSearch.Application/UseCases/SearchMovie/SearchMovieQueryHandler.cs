@@ -8,13 +8,13 @@ using ValueBlue.MovieSearch.Domain.Movies;
 
 namespace ValueBlue.MovieSearch.Application.UseCases.SearchMovie
 {
-    public class MovieSearchQueryHandler :
-        IRequestHandler<MovieSearchQuery, IQueryResult>
+    public class SearchMovieQueryHandler :
+        IRequestHandler<SearchMovieQuery, IQueryResult>
     {
         private readonly IMediator _mediator;
         private readonly ISearchMovieByTitle _movieService;
 
-        public MovieSearchQueryHandler(
+        public SearchMovieQueryHandler(
             IMediator mediator,
             ISearchMovieByTitle movieService)
         {
@@ -22,7 +22,9 @@ namespace ValueBlue.MovieSearch.Application.UseCases.SearchMovie
             _movieService = movieService;
         }
 
-        public async Task<IQueryResult> Handle(MovieSearchQuery request, CancellationToken cancellationToken)
+        public async Task<IQueryResult> Handle(
+            SearchMovieQuery request,
+            CancellationToken cancellationToken)
         {
             var stopwatch = Stopwatch.StartNew();
             var movie = await _movieService.GetMovieByTitleAsync(request.MovieTitle);
@@ -40,7 +42,7 @@ namespace ValueBlue.MovieSearch.Application.UseCases.SearchMovie
                     request.IpAddress),
                 cancellationToken);
 
-            return new MovieSearchSuccessResult(movie);
+            return new SearchMovieSuccessResult(movie);
         }
     }
 }

@@ -26,7 +26,7 @@ namespace ValueBlue.MovieSearch.Api.UseCases.V1.DeleteRequestEntry
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> DeleteRequestEntryAsync([Required] Guid id)
         {
-            var queryResult = await _mediator.Send(new DeletionOfRequestEntryCommand(id));
+            var queryResult = await _mediator.Send(new DeleteRequestEntryCommand(id));
             return Output.For(queryResult);
         }
     }

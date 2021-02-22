@@ -11,7 +11,7 @@ namespace ValueBlue.MovieSearch.Api.UseCases.V1.DeleteRequestEntry
         public static IActionResult For(ICommandResult output) =>
             output switch
             {
-                DeletionOfRequestEntrySuccessResult _ => NoContent(),
+                DeleteRequestEntrySuccessResult _ => NoContent(),
                 RequestEntryNotFoundResult _ => NotFound(),
                 _ => InternalServerError()
             };

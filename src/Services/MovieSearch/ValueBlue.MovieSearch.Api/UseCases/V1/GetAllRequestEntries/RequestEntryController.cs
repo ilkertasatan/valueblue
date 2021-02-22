@@ -25,7 +25,7 @@ namespace ValueBlue.MovieSearch.Api.UseCases.V1.GetAllRequestEntries
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetAllRequestEntriesAsync()
         {
-            var queryResult = await _mediator.Send(new AllRequestEntriesQuery());
+            var queryResult = await _mediator.Send(new GetAllRequestEntriesQuery());
             return Output.For(queryResult);
         }
     }

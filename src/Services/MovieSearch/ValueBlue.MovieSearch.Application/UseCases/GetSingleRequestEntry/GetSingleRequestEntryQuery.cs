@@ -4,10 +4,10 @@ using ValueBlue.MovieSearch.Application.Common.Interfaces;
 
 namespace ValueBlue.MovieSearch.Application.UseCases.GetSingleRequestEntry
 {
-    public sealed class SingleRequestEntryQuery :
+    public sealed class GetSingleRequestEntryQuery :
         IRequest<IQueryResult>
     {
-        public SingleRequestEntryQuery(Guid id)
+        public GetSingleRequestEntryQuery(Guid id)
         {
             Id = id;
         }

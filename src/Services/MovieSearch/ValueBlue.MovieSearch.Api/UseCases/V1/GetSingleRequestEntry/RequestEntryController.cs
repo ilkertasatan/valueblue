@@ -28,7 +28,7 @@ namespace ValueBlue.MovieSearch.Api.UseCases.V1.GetSingleRequestEntry
         public async Task<IActionResult> GetSingleRequestEntryAsync(
             [Required] Guid id)
         {
-            var queryResult = await _mediator.Send(new SingleRequestEntryQuery(id));
+            var queryResult = await _mediator.Send(new GetSingleRequestEntryQuery(id));
             return Output.For(queryResult);
         }
     }

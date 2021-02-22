@@ -27,11 +27,11 @@ namespace ValueBlue.MovieSearch.UnitTests.UseCaseTests.DeleteRequestEntry
                 .Setup(x => x.DeleteOneAsync(
                     It.IsAny<Expression<Func<RequestEntry, bool>>>(),
                     It.IsAny<CancellationToken>()));
-            var sut = new DeletionOfRequestEntryCommandHandler(repositoryMock.Object);
+            var sut = new DeleteRequestEntryCommandHandler(repositoryMock.Object);
 
-            var actualResult = await sut.Handle(new DeletionOfRequestEntryCommand(Guid.NewGuid()), CancellationToken.None);
+            var actualResult = await sut.Handle(new DeleteRequestEntryCommand(Guid.NewGuid()), CancellationToken.None);
 
-            actualResult.Should().BeOfType<DeletionOfRequestEntrySuccessResult>();
+            actualResult.Should().BeOfType<DeleteRequestEntrySuccessResult>();
         }
 
         [Fact]
@@ -47,9 +47,9 @@ namespace ValueBlue.MovieSearch.UnitTests.UseCaseTests.DeleteRequestEntry
                 .Setup(x => x.DeleteOneAsync(
                     It.IsAny<Expression<Func<RequestEntry, bool>>>(),
                     It.IsAny<CancellationToken>()));
-            var sut = new DeletionOfRequestEntryCommandHandler(repositoryMock.Object);
+            var sut = new DeleteRequestEntryCommandHandler(repositoryMock.Object);
 
-            var actualResult = await sut.Handle(new DeletionOfRequestEntryCommand(Guid.NewGuid()), CancellationToken.None);
+            var actualResult = await sut.Handle(new DeleteRequestEntryCommand(Guid.NewGuid()), CancellationToken.None);
 
             actualResult.Should().BeOfType<RequestEntryNotFoundResult>();
         }

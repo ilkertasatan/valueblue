@@ -26,7 +26,7 @@ namespace ValueBlue.MovieSearch.UnitTests.UseCaseTests.GetAllRequestEntries
             };
             var mediatorMock = new Mock<IMediator>();
             mediatorMock
-                .Setup(x => x.Send(It.IsAny<AllRequestEntriesQuery>(), It.IsAny<CancellationToken>()))
+                .Setup(x => x.Send(It.IsAny<GetAllRequestEntriesQuery>(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync(new AllRequestEntriesSuccessResult(expectedRequestEntries));
             var sut = new RequestEntryController(mediatorMock.Object);
 

@@ -8,27 +8,28 @@ using ValueBlue.MovieSearch.Domain.RequestEntries;
 
 namespace ValueBlue.MovieSearch.Application.UseCases.DeleteRequestEntry
 {
-    public class DeletionOfRequestEntryCommandHandler :
-        IRequestHandler<DeletionOfRequestEntryCommand, ICommandResult>
+    public class DeleteRequestEntryCommandHandler :
+        IRequestHandler<DeleteRequestEntryCommand, ICommandResult>
     {
         private readonly IRepository<RequestEntry> _repository;
 
-        public DeletionOfRequestEntryCommandHandler(IRepository<RequestEntry> repository)
+        public DeleteRequestEntryCommandHandler(
+            IRepository<RequestEntry> repository)
         {
             _repository = repository;
         }
 
         public async Task<ICommandResult> Handle(
-            DeletionOfRequestEntryCommand ofRequest,
+            DeleteRequestEntryCommand request,
             CancellationToken cancellationToken)
         {
-            var requestEntry = await _repository.FindOneAsync(r => r.Id == ofRequest.Id, cancellationToken);
+            var requestEntry = await _repository.FindOneAsync(r => r.Id == request.Id, cancellationToken);
             if (!requestEntry.Exists())
                 return new RequestEntryNotFoundResult();
             
-            await _repository.DeleteOneAsync(x => x.Id == ofRequest.Id, cancellationToken);
+            await _repository.DeleteOneAsync(x => x.Id == request.Id, cancellationToken);
 
-            return new DeletionOfRequestEntrySuccessResult();
+            return new DeleteRequestEntrySuccessResult();
         }
     }
 }

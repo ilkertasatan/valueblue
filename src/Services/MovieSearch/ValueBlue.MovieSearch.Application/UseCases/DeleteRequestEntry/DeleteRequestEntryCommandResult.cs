@@ -2,7 +2,7 @@
 
 namespace ValueBlue.MovieSearch.Application.UseCases.DeleteRequestEntry
 {
-    public class DeletionOfRequestEntrySuccessResult : ICommandResult
+    public class DeleteRequestEntrySuccessResult : ICommandResult
     {
     }
 }

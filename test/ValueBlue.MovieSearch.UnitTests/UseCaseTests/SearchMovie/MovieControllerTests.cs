@@ -28,8 +28,8 @@ namespace ValueBlue.MovieSearch.UnitTests.UseCaseTests.SearchMovie
         {
             var expectedMovie = GivenMovie();
             _mediatorMock
-                .Setup(x => x.Send(It.IsAny<MovieSearchQuery>(), It.IsAny<CancellationToken>()))
-                .ReturnsAsync(new MovieSearchSuccessResult(expectedMovie));
+                .Setup(x => x.Send(It.IsAny<SearchMovieQuery>(), It.IsAny<CancellationToken>()))
+                .ReturnsAsync(new SearchMovieSuccessResult(expectedMovie));
 
             var actualResult = await _sut.SearchMovieByTitleAsync("movie-title");
 
@@ -43,7 +43,7 @@ namespace ValueBlue.MovieSearch.UnitTests.UseCaseTests.SearchMovie
         public async Task Should_Return_404_When_Movie_Is_Not_Found()
         {
             _mediatorMock
-                .Setup(x => x.Send(It.IsAny<MovieSearchQuery>(), It.IsAny<CancellationToken>()))
+                .Setup(x => x.Send(It.IsAny<SearchMovieQuery>(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync(new MovieNotFoundResult("message"));
 
             var actualResult = await _sut.SearchMovieByTitleAsync("movie-title");

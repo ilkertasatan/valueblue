@@ -25,7 +25,7 @@ namespace ValueBlue.MovieSearch.Api.UseCases.V1.GetRequestEntriesByDate
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetRequestEntriesByDateAsync([FromQuery]GetRequestEntriesByDateRequest request)
         {
-            var queryResult = await _mediator.Send(new RequestEntryByDateQuery(request.From, request.End));
+            var queryResult = await _mediator.Send(new GetRequestEntriesByDateQuery(request.From, request.End));
             return Output.For(queryResult);
         }
     }

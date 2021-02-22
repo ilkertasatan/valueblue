@@ -8,17 +8,20 @@ using ValueBlue.MovieSearch.Domain.RequestEntries;
 
 namespace ValueBlue.MovieSearch.Application.UseCases.GetRequestEntriesByDate
 {
-    public class RequestEntryByDateQueryHandler : 
-        IRequestHandler<RequestEntryByDateQuery, IQueryResult>
+    public class GetRequestEntriesByDateQueryHandler : 
+        IRequestHandler<GetRequestEntriesByDateQuery, IQueryResult>
     {
         private readonly IRepository<RequestEntry> _repository;
 
-        public RequestEntryByDateQueryHandler(IRepository<RequestEntry> repository)
+        public GetRequestEntriesByDateQueryHandler(
+            IRepository<RequestEntry> repository)
         {
             _repository = repository;
         }
 
-        public async Task<IQueryResult> Handle(RequestEntryByDateQuery request, CancellationToken cancellationToken)
+        public async Task<IQueryResult> Handle(
+            GetRequestEntriesByDateQuery request,
+            CancellationToken cancellationToken)
         {
             var requestEntries = await _repository.FindManyAsync(r =>
                     r.Timestamp >= request.From &&

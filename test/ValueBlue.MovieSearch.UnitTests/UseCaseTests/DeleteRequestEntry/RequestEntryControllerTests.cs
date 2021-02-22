@@ -18,8 +18,8 @@ namespace ValueBlue.MovieSearch.UnitTests.UseCaseTests.DeleteRequestEntry
         {
             var mediatorMock = new Mock<IMediator>();
             mediatorMock
-                .Setup(x => x.Send(It.IsAny<DeletionOfRequestEntryCommand>(), It.IsAny<CancellationToken>()))
-                .ReturnsAsync(new DeletionOfRequestEntrySuccessResult());
+                .Setup(x => x.Send(It.IsAny<DeleteRequestEntryCommand>(), It.IsAny<CancellationToken>()))
+                .ReturnsAsync(new DeleteRequestEntrySuccessResult());
             var sut = new RequestEntryController(mediatorMock.Object);
 
             var actualResult = await sut.DeleteRequestEntryAsync(Guid.NewGuid());

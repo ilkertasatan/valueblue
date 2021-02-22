@@ -27,9 +27,9 @@ namespace ValueBlue.MovieSearch.UnitTests.UseCaseTests.GetAllRequestEntries
                     It.IsAny<Expression<Func<RequestEntry, bool>>>(),
                     It.IsAny<CancellationToken>()))
                 .ReturnsAsync(expectedRequestEntries);
-            var sut = new AllRequestEntriesQueryHandler(repositoryMock.Object);
+            var sut = new GetAllRequestEntriesQueryHandler(repositoryMock.Object);
 
-            var actualResult = await sut.Handle(new AllRequestEntriesQuery(), CancellationToken.None);
+            var actualResult = await sut.Handle(new GetAllRequestEntriesQuery(), CancellationToken.None);
 
             actualResult.Should()
                 .BeOfType<AllRequestEntriesSuccessResult>()

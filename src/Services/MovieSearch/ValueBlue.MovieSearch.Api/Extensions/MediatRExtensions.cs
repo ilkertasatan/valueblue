@@ -8,7 +8,7 @@ namespace ValueBlue.MovieSearch.Api.Extensions
     {
         public static IServiceCollection AddMediatR(this IServiceCollection services)
         {
-            services.AddMediatR(typeof(MovieSearchQuery).Assembly);
+            services.AddMediatR(typeof(SearchMovieQuery).Assembly);
 
             return services;
         }
