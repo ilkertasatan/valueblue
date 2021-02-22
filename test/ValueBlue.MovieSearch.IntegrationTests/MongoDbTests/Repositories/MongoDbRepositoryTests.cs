@@ -13,11 +13,11 @@ namespace ValueBlue.MovieSearch.IntegrationTests.MongoDbTests.Repositories
         IClassFixture<DatabaseFixture>
     {
         private readonly CancellationToken _cancellationToken;
-        private readonly MongoDbRepository<FakeEntity> _sut;
+        private readonly Repository<FakeEntity> _sut;
 
         public MongoDbRepositoryTests(DatabaseFixture fixture)
         {
-            _sut = new MongoDbRepository<FakeEntity>(fixture.Database);
+            _sut = new Repository<FakeEntity>(fixture.Database);
 
             var cancellation = new CancellationTokenSource();
             cancellation.CancelAfter(TimeSpan.FromSeconds(3));

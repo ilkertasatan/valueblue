@@ -1,4 +1,5 @@
 ﻿using System;
+using ValueBlue.MovieSearch.Domain.Movies.ValueObjects;
 
 namespace ValueBlue.MovieSearch.Domain.RequestEntries
 {

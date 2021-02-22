@@ -9,14 +9,14 @@ using ValueBlue.MovieSearch.Domain;
 
 namespace ValueBlue.MovieSearch.Infrastructure.DataAccess.Repositories
 {
-    public class MongoDbRepository<TEntity> : IRepository<TEntity> where TEntity : new()
+    public class Repository<TEntity> : IRepository<TEntity> where TEntity : new()
     {
-        public MongoDbRepository(IMongoDatabase mongoDb)
+        public Repository(IMongoDatabase mongoDb)
         {
             Collection = mongoDb.GetCollection<TEntity>(typeof(TEntity).Name.Pluralize());
         }
 
-        private IMongoCollection<TEntity> Collection { get; }
+        protected IMongoCollection<TEntity> Collection { get; }
         
         public async Task InsertOneAsync(
             TEntity entity,

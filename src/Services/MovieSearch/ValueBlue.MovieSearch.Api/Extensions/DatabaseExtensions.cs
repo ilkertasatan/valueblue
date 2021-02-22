@@ -25,7 +25,7 @@ namespace ValueBlue.MovieSearch.Api.Extensions
                 return mongoDatabase;
             });
             
-            services.AddScoped(typeof(IRepository<>), typeof(MongoDbRepository<>));
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
             BsonClassMap.RegisterClassMap<RequestEntry>(
                 map =>
