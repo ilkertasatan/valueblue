@@ -38,7 +38,9 @@ namespace ValueBlue.MovieSearch.Api
 
             app.UseRouting();
             app.UseAuthorization();
-            app.UseMiddleware<AuthorizationByApiKeyMiddleware>();
+            app.UseCustomAuthorization();
+            app.UseRequestResponseLogging();
+            app.ConfigureExceptionHandler();
             
             app.UseSwaggerDocumentation();
 

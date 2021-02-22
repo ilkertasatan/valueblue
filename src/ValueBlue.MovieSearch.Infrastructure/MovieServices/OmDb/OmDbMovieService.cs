@@ -32,28 +32,16 @@ namespace ValueBlue.MovieSearch.Infrastructure.MovieServices.OmDb
 
         public async Task<Movie> GetMovieByTitleAsync(string title)
         {
-            var movie = Movie.Empty;
+            var response = await _uri
+                .SetQueryParams(new
+                {
+                    t = title,
+                    apikey = _apiKey
+                })
+                .WithTimeout(TimeSpan.FromSeconds(3))
+                .GetJsonAsync<OmDbMovieResponse>();
 
-            try
-            {
-                var response = await _uri
-                    .SetQueryParams(new
-                    {
-                        t = title,
-                        apikey = _apiKey
-                    })
-                    .WithTimeout(TimeSpan.FromSeconds(3))
-                    .GetJsonAsync<OmDbMovieResponse>();
-
-                movie = _translator.Translate(response);
-            }
-            catch (FlurlHttpTimeoutException)
-            {
-            }
-            catch (FlurlHttpException)
-            {
-            }
-
+            var movie = _translator.Translate(response);
             return movie;
         }
     }
