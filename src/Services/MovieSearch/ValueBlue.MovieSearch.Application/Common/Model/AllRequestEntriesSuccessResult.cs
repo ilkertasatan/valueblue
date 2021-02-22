@@ -2,7 +2,7 @@
 using ValueBlue.MovieSearch.Application.Common.Interfaces;
 using ValueBlue.MovieSearch.Domain.RequestEntries;
 
-namespace ValueBlue.MovieSearch.Application.UseCases.GetAllRequestEntries
+namespace ValueBlue.MovieSearch.Application.Common.Model
 {
     public class AllRequestEntriesSuccessResult :
         IQueryResult
