@@ -12,7 +12,7 @@ using Xunit;
 
 namespace ValueBlue.MovieSearch.UnitTests.UseCaseTests.DeleteRequestEntry
 {
-    public class DeletionOfRequestEntryCommandTests
+    public class DeleteRequestEntryCommandHandlerTests
     {
         [Fact]
         public async Task Should_Delete_Request_Entry()

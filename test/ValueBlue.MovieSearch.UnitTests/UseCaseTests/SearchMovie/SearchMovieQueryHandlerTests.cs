@@ -11,12 +11,12 @@ using Xunit;
 
 namespace ValueBlue.MovieSearch.UnitTests.UseCaseTests.SearchMovie
 {
-    public class MovieSearchQueryHandlerTests 
+    public class SearchMovieQueryHandlerTests 
     {
         private readonly Mock<ISearchMovieByTitle> _movieServiceMock;
         private readonly SearchMovieQueryHandler _sut;
 
-        public MovieSearchQueryHandlerTests()
+        public SearchMovieQueryHandlerTests()
         {
             _movieServiceMock = new Mock<ISearchMovieByTitle>();
             _sut = new SearchMovieQueryHandler(

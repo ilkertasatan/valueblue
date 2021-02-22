@@ -12,7 +12,7 @@ using Xunit;
 
 namespace ValueBlue.MovieSearch.UnitTests.UseCaseTests.GetAllRequestEntries
 {
-    public class AllRequestEntriesQueryHandlerTests
+    public class GetAllRequestEntriesQueryHandlerTests
     {
         [Fact]
         public async Task Should_Return_Request_Entries()

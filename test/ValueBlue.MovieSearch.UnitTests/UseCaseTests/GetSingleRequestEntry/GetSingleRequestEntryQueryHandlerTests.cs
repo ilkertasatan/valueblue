@@ -13,12 +13,12 @@ using Xunit;
 
 namespace ValueBlue.MovieSearch.UnitTests.UseCaseTests.GetSingleRequestEntry
 {
-    public class SingleRequestEntryQueryHandlerTests
+    public class GetSingleRequestEntryQueryHandlerTests
     {
         private readonly Mock<IRepository<RequestEntry>> _repositoryMock;
         private readonly GetSingleRequestEntryQueryHandler _sut;
 
-        public SingleRequestEntryQueryHandlerTests()
+        public GetSingleRequestEntryQueryHandlerTests()
         {
             _repositoryMock = new Mock<IRepository<RequestEntry>>();
             _sut = new GetSingleRequestEntryQueryHandler(_repositoryMock.Object);
