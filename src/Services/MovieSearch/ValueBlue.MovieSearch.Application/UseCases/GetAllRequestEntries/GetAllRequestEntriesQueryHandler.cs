@@ -24,7 +24,7 @@ namespace ValueBlue.MovieSearch.Application.UseCases.GetAllRequestEntries
             CancellationToken cancellationToken)
         {
             var requestEntries = await _repository.FindManyAsync(_ => true, cancellationToken);
-            return new AllRequestEntriesSuccessResult(requestEntries);
+            return new GetRequestEntriesSuccessResult(requestEntries);
         }
     }
 }

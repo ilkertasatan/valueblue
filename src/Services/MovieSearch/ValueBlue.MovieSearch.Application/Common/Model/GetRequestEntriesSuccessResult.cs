@@ -4,10 +4,11 @@ using ValueBlue.MovieSearch.Domain.RequestEntries;
 
 namespace ValueBlue.MovieSearch.Application.Common.Model
 {
-    public class AllRequestEntriesSuccessResult :
+    public class GetRequestEntriesSuccessResult :
         IQueryResult
     {
-        public AllRequestEntriesSuccessResult(IEnumerable<RequestEntry> requestEntries)
+        public GetRequestEntriesSuccessResult(
+            IEnumerable<RequestEntry> requestEntries)
         {
             RequestEntries = requestEntries;
         }

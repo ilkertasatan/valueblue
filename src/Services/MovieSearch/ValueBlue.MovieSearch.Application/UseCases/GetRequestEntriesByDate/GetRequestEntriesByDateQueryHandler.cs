@@ -27,7 +27,7 @@ namespace ValueBlue.MovieSearch.Application.UseCases.GetRequestEntriesByDate
                     r.Timestamp >= request.From &&
                     r.Timestamp <= request.End
                 , cancellationToken);
-            return new AllRequestEntriesSuccessResult(requestEntries);
+            return new GetRequestEntriesSuccessResult(requestEntries);
         }
     }
 }

@@ -14,7 +14,7 @@ namespace ValueBlue.MovieSearch.Api.UseCases.V1.GetRequestEntriesByDate
         public static IActionResult For(IQueryResult output) =>
             output switch
             {
-                AllRequestEntriesSuccessResult result => Ok(result.RequestEntries),
+                GetRequestEntriesSuccessResult result => Ok(result.RequestEntries),
                 _ => InternalServerError()
             };
 

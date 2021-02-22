@@ -5,36 +5,40 @@ using System.Threading.Tasks;
 using FluentAssertions;
 using Moq;
 using ValueBlue.MovieSearch.Application.Common.Model;
-using ValueBlue.MovieSearch.Application.UseCases.GetAllRequestEntries;
+using ValueBlue.MovieSearch.Application.UseCases.GetRequestEntriesByDate;
 using ValueBlue.MovieSearch.Domain;
 using ValueBlue.MovieSearch.Domain.RequestEntries;
 using Xunit;
 
-namespace ValueBlue.MovieSearch.UnitTests.UseCaseTests.GetAllRequestEntries
+namespace ValueBlue.MovieSearch.UnitTests.UseCaseTests.GetRequestEntriesByDate
 {
-    public class GetAllRequestEntriesQueryHandlerTests
+    public class GetRequestEntriesByDateQueryHandlerTests
     {
         [Fact]
-        public async Task Should_Return_Request_Entries()
+        public async Task Should_Return_Request_Entries_Given_Date_Period()
         {
             var expectedRequestEntries = new[]
             {
+                new RequestEntry("search-token", "imdbId", 100, DateTime.Now.AddDays(-1), "127.0.0.1"),
                 new RequestEntry("search-token", "imdbId", 100, DateTime.Now, "127.0.0.1")
             };
+            var notExpectedRequestEntry =
+                new RequestEntry("search-token", "imdbId", 100, DateTime.Now.AddDays(-2), "127.0.0.1");
             var repositoryMock = new Mock<IRepository<RequestEntry>>();
             repositoryMock
                 .Setup(x => x.FindManyAsync(
                     It.IsAny<Expression<Func<RequestEntry, bool>>>(),
                     It.IsAny<CancellationToken>()))
                 .ReturnsAsync(expectedRequestEntries);
-            var sut = new GetAllRequestEntriesQueryHandler(repositoryMock.Object);
+            var sut = new GetRequestEntriesByDateQueryHandler(repositoryMock.Object);
 
-            var actualResult = await sut.Handle(new GetAllRequestEntriesQuery(), CancellationToken.None);
+            var actualResult = await sut.Handle(
+                new GetRequestEntriesByDateQuery(DateTime.Now.AddDays(-1), DateTime.Now), CancellationToken.None);
 
             actualResult.Should()
                 .BeOfType<GetRequestEntriesSuccessResult>()
                 .Which.RequestEntries
-                .Should().Contain(expectedRequestEntries);
+                .Should().Contain(expectedRequestEntries).And.NotContain(notExpectedRequestEntry);
         }
     }
 }
