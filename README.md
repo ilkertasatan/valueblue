@@ -1,6 +1,6 @@
 ﻿# ValueBlue Assignment
 This is a technical test that I developed for ValueBlue. All information that you need and instructions on how you can test have been introduced the following.
-I approximately spent 12-14 hours to complete this assignment.
+I approximately spent 16-18 hours to complete this assignment.
 
 # Technologies
 Aside from .NET Core, numerous technologies I used within this solution including:
@@ -36,7 +36,7 @@ This layer interacts with the external components such as MongoDB and external A
 This project also has `Unit Tests`, `Integration Tests` and `End To End` tests. 
 
 ## Movie Search API
-This API communicates with the external movie platform which is called `OmDb` and returns a movie based on given title. 
+This API communicates with the external movie platform which is called `OmDb` and returns a movie based on given title.
 
 ## API Interfaces
 Swagger documentation has been added to the project to see endpoints, request and responses. You can also test the API via `Swagger`.
