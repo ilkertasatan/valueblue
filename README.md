@@ -37,9 +37,12 @@ This project also has `Unit Tests`, `Integration Tests` and `End To End` tests.
 
 ## Movie Search API
 This API communicates with the external movie platform which is called `OmDb` and returns a movie based on given title.
+For Admin endpoints, you must authorize yourself by adding custom header `X-Api-Key` before making a call.
+In our case, you should use `OmDB` Api-Key which is defined in `appsettings.Development.json` file.
+It's the same as production one, but in the real case, both should be different, and stored in a secure place like Azure Key Vault. 
 
 ## API Interfaces
-Swagger documentation has been added to the project to see endpoints, request and responses. You can also test the API via `Swagger`.
+Swagger documentation has been added to the project to see endpoints, request and responses. You can also test the API via `Swagger` or any other rest client tools.
 
 #### Movie Search API Interfaces
 Use this link: http://localhost:5000/swagger/index.html to reach Swagger document.
