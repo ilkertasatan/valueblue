@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
+using MongoDB.Bson.Serialization.IdGenerators;
 using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Driver;
 using ValueBlue.MovieSearch.Domain;
@@ -31,7 +32,9 @@ namespace ValueBlue.MovieSearch.Api.Extensions
                 map =>
                 {
                     map.AutoMap();
-                    map.MapProperty(x => x.Id).SetSerializer(new GuidSerializer(BsonType.String));
+                    map.MapIdProperty(x => x.Id)
+                        .SetIdGenerator(StringObjectIdGenerator.Instance)
+                        .SetSerializer(new StringSerializer(BsonType.ObjectId));
                     map.MapProperty(x => x.SearchToken).SetElementName("search_token");
                     map.MapProperty(x => x.ImdbId).SetElementName("imdbID");
                     map.MapProperty(x => x.ProcessingTime).SetElementName("processing_time_ms");
