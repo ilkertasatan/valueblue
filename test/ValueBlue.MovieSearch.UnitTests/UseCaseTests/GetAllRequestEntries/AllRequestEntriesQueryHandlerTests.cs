@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Moq;
+using ValueBlue.MovieSearch.Application.Common.Model;
 using ValueBlue.MovieSearch.Application.UseCases.GetAllRequestEntries;
 using ValueBlue.MovieSearch.Domain;
 using ValueBlue.MovieSearch.Domain.RequestEntries;

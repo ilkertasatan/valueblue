@@ -7,6 +7,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using ValueBlue.MovieSearch.Api.UseCases.V1.GetSingleRequestEntry;
+using ValueBlue.MovieSearch.Application.Common.Model;
 using ValueBlue.MovieSearch.Application.UseCases.GetAllRequestEntries;
 using ValueBlue.MovieSearch.Domain.RequestEntries;
 using Xunit;

@@ -7,7 +7,7 @@ using ValueBlue.MovieSearch.Application.Common.Interfaces;
 using ValueBlue.MovieSearch.Application.Common.Model;
 using ValueBlue.MovieSearch.Domain.RequestEntries;
 
-namespace ValueBlue.MovieSearch.Api.UseCases.V1.GetAllRequestEntries
+namespace ValueBlue.MovieSearch.Api.UseCases.V1.GetRequestEntriesByDate
 {
     public static class Output
     {
