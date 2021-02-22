@@ -22,7 +22,7 @@ namespace ValueBlue.MovieSearch.UnitTests.UseCaseTests.DeleteRequestEntry
                 .ReturnsAsync(new DeleteRequestEntrySuccessResult());
             var sut = new RequestEntryController(mediatorMock.Object);
 
-            var actualResult = await sut.DeleteRequestEntryAsync(Guid.NewGuid());
+            var actualResult = await sut.DeleteRequestEntryAsync(Guid.NewGuid().ToString());
 
             actualResult.Should().BeOfType<NoContentResult>();
         }

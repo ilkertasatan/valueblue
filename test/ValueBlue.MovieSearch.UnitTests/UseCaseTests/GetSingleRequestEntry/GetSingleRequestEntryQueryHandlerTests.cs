@@ -27,14 +27,17 @@ namespace ValueBlue.MovieSearch.UnitTests.UseCaseTests.GetSingleRequestEntry
         [Fact]
         public async Task Should_Return_Single_Request_Entry_Success_Result_When_Request_Entry_Is_Found()
         {
-            var expectedRequestEntry = new RequestEntry("search-token", "imdbId", 100, DateTime.Now, "127.0.0.1");
+            var expectedRequestEntry = new RequestEntry("search-token", "imdbId", 100, DateTime.Now, "127.0.0.1")
+            {
+                Id = Guid.NewGuid().ToString()
+            };
             _repositoryMock
                 .Setup(x => x.FindOneAsync(
                     It.IsAny<Expression<Func<RequestEntry, bool>>>(),
                     It.IsAny<CancellationToken>()))
                 .ReturnsAsync(expectedRequestEntry);
 
-            var actualResult = await _sut.Handle(new GetSingleRequestEntryQuery(Guid.NewGuid()), CancellationToken.None);
+            var actualResult = await _sut.Handle(new GetSingleRequestEntryQuery(Guid.NewGuid().ToString()), CancellationToken.None);
 
             actualResult.Should()
                 .BeOfType<GetSingleRequestEntrySuccessResult>()
@@ -51,7 +54,7 @@ namespace ValueBlue.MovieSearch.UnitTests.UseCaseTests.GetSingleRequestEntry
                     It.IsAny<CancellationToken>()))
                 .ReturnsAsync(RequestEntry.Empty);
             
-            var actualResult = await _sut.Handle(new GetSingleRequestEntryQuery(Guid.NewGuid()), CancellationToken.None);
+            var actualResult = await _sut.Handle(new GetSingleRequestEntryQuery(Guid.NewGuid().ToString()), CancellationToken.None);
 
             actualResult.Should().BeOfType<RequestEntryNotFoundResult>();
         }

@@ -17,14 +17,17 @@ namespace ValueBlue.MovieSearch.UnitTests.UseCaseTests.GetSingleRequestEntry
         [Fact]
         public async Task Should_Return_Single_Request_Entry()
         {
-            var expectedRequestEntry = new RequestEntry("search-token", "imdbId", 100, DateTime.Now, "127.0.0.1");
+            var expectedRequestEntry = new RequestEntry("search-token", "imdbId", 100, DateTime.Now, "127.0.0.1")
+            {
+                Id = Guid.NewGuid().ToString()
+            };
             var mediatorMock = new Mock<IMediator>();
             mediatorMock
                 .Setup(x => x.Send(It.IsAny<GetSingleRequestEntryQuery>(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync(new GetSingleRequestEntrySuccessResult(expectedRequestEntry));
             var sut = new RequestEntryController(mediatorMock.Object);
 
-            var actualResult = await sut.GetSingleRequestEntryAsync(Guid.NewGuid());
+            var actualResult = await sut.GetSingleRequestEntryAsync(Guid.NewGuid().ToString());
 
             actualResult.Should()
                 .BeOfType<OkObjectResult>()

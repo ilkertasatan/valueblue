@@ -1,6 +1,6 @@
 ﻿# ValueBlue Assignment
 This is a technical test that I developed for ValueBlue. All information that you need and instructions on how you can test have been introduced the following.
-I approximately spent 16-18 hours to complete this assignment.
+I approximately spent 18-20 hours to complete this assignment.
 
 # Technologies
 Aside from .NET Core, numerous technologies I used within this solution including:

@@ -19,8 +19,13 @@ namespace ValueBlue.MovieSearch.UnitTests.UseCaseTests.GetRequestEntriesByDate
         {
             var expectedRequestEntries = new[]
             {
-                new RequestEntry("search-token", "imdbId", 100, DateTime.Now.AddDays(-1), "127.0.0.1"),
-                new RequestEntry("search-token", "imdbId", 100, DateTime.Now, "127.0.0.1")
+                new RequestEntry("search-token", "imdbId", 100, DateTime.Now.AddDays(-1), "127.0.0.1")
+                {
+                    Id = Guid.NewGuid().ToString()
+                },
+                new RequestEntry("search-token", "imdbId", 100, DateTime.Now, "127.0.0.1"){
+                    Id = Guid.NewGuid().ToString()
+                }
             };
             var notExpectedRequestEntry =
                 new RequestEntry("search-token", "imdbId", 100, DateTime.Now.AddDays(-2), "127.0.0.1");

@@ -22,7 +22,10 @@ namespace ValueBlue.MovieSearch.UnitTests.UseCaseTests.GetAllRequestEntries
         {
             var expectedRequestEntries = new[]
             {
-                new RequestEntry("search-token", "imdbId", 100, DateTime.Now, "127.0.0.1")
+                new RequestEntry("search-token", "imdbId", 100, DateTime.Now, "ip_address")
+                {
+                    Id = Guid.NewGuid().ToString()
+                }
             };
             var mediatorMock = new Mock<IMediator>();
             mediatorMock

@@ -7,11 +7,11 @@ namespace ValueBlue.MovieSearch.Application.UseCases.GetSingleRequestEntry
     public sealed class GetSingleRequestEntryQuery :
         IRequest<IQueryResult>
     {
-        public GetSingleRequestEntryQuery(Guid id)
+        public GetSingleRequestEntryQuery(string id)
         {
             Id = id;
         }
 
-        public Guid Id { get; }
+        public string Id { get; }
     }
 }

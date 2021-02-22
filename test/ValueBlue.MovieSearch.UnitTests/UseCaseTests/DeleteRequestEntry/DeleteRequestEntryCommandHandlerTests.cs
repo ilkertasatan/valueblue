@@ -22,14 +22,17 @@ namespace ValueBlue.MovieSearch.UnitTests.UseCaseTests.DeleteRequestEntry
                 .Setup(x => x.FindOneAsync(
                     It.IsAny<Expression<Func<RequestEntry, bool>>>(),
                     It.IsAny<CancellationToken>()))
-                .ReturnsAsync(new RequestEntry("search-token", "imdbId", 100, DateTime.Now, "ip_address"));
+                .ReturnsAsync(new RequestEntry("search-token", "imdbId", 100, DateTime.Now, "ip_address")
+                {
+                    Id = Guid.NewGuid().ToString()
+                });
             repositoryMock
                 .Setup(x => x.DeleteOneAsync(
                     It.IsAny<Expression<Func<RequestEntry, bool>>>(),
                     It.IsAny<CancellationToken>()));
             var sut = new DeleteRequestEntryCommandHandler(repositoryMock.Object);
 
-            var actualResult = await sut.Handle(new DeleteRequestEntryCommand(Guid.NewGuid()), CancellationToken.None);
+            var actualResult = await sut.Handle(new DeleteRequestEntryCommand(Guid.NewGuid().ToString()), CancellationToken.None);
 
             actualResult.Should().BeOfType<DeleteRequestEntrySuccessResult>();
         }
@@ -49,7 +52,7 @@ namespace ValueBlue.MovieSearch.UnitTests.UseCaseTests.DeleteRequestEntry
                     It.IsAny<CancellationToken>()));
             var sut = new DeleteRequestEntryCommandHandler(repositoryMock.Object);
 
-            var actualResult = await sut.Handle(new DeleteRequestEntryCommand(Guid.NewGuid()), CancellationToken.None);
+            var actualResult = await sut.Handle(new DeleteRequestEntryCommand(Guid.NewGuid().ToString()), CancellationToken.None);
 
             actualResult.Should().BeOfType<RequestEntryNotFoundResult>();
         }

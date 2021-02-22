@@ -6,11 +6,11 @@ namespace ValueBlue.MovieSearch.Application.UseCases.DeleteRequestEntry
 {
     public sealed class DeleteRequestEntryCommand : IRequest<ICommandResult>
     {
-        public DeleteRequestEntryCommand(Guid id)
+        public DeleteRequestEntryCommand(string id)
         {
             Id = id;
         }
 
-        public Guid Id { get; }
+        public string Id { get; }
     }
 }

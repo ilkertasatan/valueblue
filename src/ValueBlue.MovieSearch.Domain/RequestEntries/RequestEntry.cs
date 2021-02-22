@@ -1,10 +1,9 @@
 ﻿using System;
-using ValueBlue.MovieSearch.Domain.Movies.ValueObjects;
 
 namespace ValueBlue.MovieSearch.Domain.RequestEntries
 {
     public class RequestEntry :
-        IAggregate<Guid>,
+        IAggregate<string>,
         IMaybeExist
     {
         public static readonly RequestEntry Empty = new RequestEntry();
@@ -20,7 +19,6 @@ namespace ValueBlue.MovieSearch.Domain.RequestEntries
             DateTime timestamp,
             string ipAddress)
         {
-            Id = Guid.NewGuid();
             SearchToken = searchToken;
             ImdbId = imdbId;
             ProcessingTime = processingTime;
@@ -28,7 +26,7 @@ namespace ValueBlue.MovieSearch.Domain.RequestEntries
             IpAddress = ipAddress;
         }
 
-        public Guid Id { get; private set; }
+        public string Id { get; set; }
         public string SearchToken { get; private set; }
         public string ImdbId { get; private set; }
         public long ProcessingTime { get; private set; }
@@ -37,7 +35,7 @@ namespace ValueBlue.MovieSearch.Domain.RequestEntries
 
         public bool Exists()
         {
-            return !Equals(Id, Guid.Empty);
+            return !string.IsNullOrWhiteSpace(Id);
         }
     }
 }

@@ -26,7 +26,7 @@ namespace ValueBlue.MovieSearch.Api.UseCases.V1.GetSingleRequestEntry
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetSingleRequestEntryAsync(
-            [Required] Guid id)
+            [Required] string id)
         {
             var queryResult = await _mediator.Send(new GetSingleRequestEntryQuery(id));
             return Output.For(queryResult);
