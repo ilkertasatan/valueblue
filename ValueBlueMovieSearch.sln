@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValueBlue.MovieSearch.UnitT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValueBlue.MovieSearch.IntegrationTests", "test\ValueBlue.MovieSearch.IntegrationTests\ValueBlue.MovieSearch.IntegrationTests.csproj", "{7AD964B6-F043-4F6A-9010-607CBA0747D8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValueBlue.MovieSearch.EndToEndTests", "test\ValueBlue.MovieSearch.EndToEndTests\ValueBlue.MovieSearch.EndToEndTests.csproj", "{9608891D-734B-4D7B-A764-1A069BFE1BED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,7 @@ Global
 		{33908330-3553-4238-8BAC-25093FD87C1D} = {D087E2DA-F8CC-402F-A71B-8D3A8C629385}
 		{C0821E58-50F2-41E7-99F1-C334CE8E6EE0} = {D087E2DA-F8CC-402F-A71B-8D3A8C629385}
 		{6406E0BC-53BB-4F16-BCCC-660079B1EA3D} = {D087E2DA-F8CC-402F-A71B-8D3A8C629385}
+		{9608891D-734B-4D7B-A764-1A069BFE1BED} = {C91938A0-15E4-4412-A78E-34E69D37A8CD}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{DB044710-6C07-42E4-984F-37A65CDEA418}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -57,5 +60,9 @@ Global
 		{7AD964B6-F043-4F6A-9010-607CBA0747D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7AD964B6-F043-4F6A-9010-607CBA0747D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7AD964B6-F043-4F6A-9010-607CBA0747D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9608891D-734B-4D7B-A764-1A069BFE1BED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9608891D-734B-4D7B-A764-1A069BFE1BED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9608891D-734B-4D7B-A764-1A069BFE1BED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9608891D-734B-4D7B-A764-1A069BFE1BED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

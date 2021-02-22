@@ -8,7 +8,7 @@ namespace ValueBlue.MovieSearch.Api.Extensions
         {
             return request == null ? 
                 string.Empty :
-                request.HttpContext.Connection.RemoteIpAddress.ToString();
+                request.HttpContext.Connection.RemoteIpAddress?.ToString();
         }
     }
 }
