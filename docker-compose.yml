@@ -1,0 +1,26 @@
+﻿version: '3.8'
+
+services:
+
+  movie-search-api:
+    build:
+      context: .
+      dockerfile: src/Dockerfile
+    depends_on:
+      - mongodb
+    links:
+      - mongodb
+    ports:
+      - 5000:5000
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ASPNETCORE_URLS: http://*:5000
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - 27017:27017
+    restart: always  
+    
+                          
