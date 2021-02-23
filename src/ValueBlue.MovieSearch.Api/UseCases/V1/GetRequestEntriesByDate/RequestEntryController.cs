@@ -20,7 +20,7 @@ namespace ValueBlue.MovieSearch.Api.UseCases.V1.GetRequestEntriesByDate
             _mediator = mediator;
         }
 
-        [HttpGet("search")]
+        [HttpGet("date")]
         [ProducesResponseType(typeof(IEnumerable<SingleRequestEntryResponse>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetRequestEntriesByDateAsync([FromQuery]GetRequestEntriesByDateRequest request)
